@@ -1,0 +1,62 @@
+/*作业的基本信息style*/
+#zyInfo{
+	width:70%;
+	height: auto;
+	margin: 0 auto; 
+}
+.hw_title{
+	width: 100%;
+	height: 40px;
+	line-height: 40px;
+	font-weight: normal;
+	text-align: center;
+}
+#hw_info{
+	text-align: left;
+	font-weight: bold;
+	background: #ececec;
+}
+.pb_container{
+	width: 100%;
+	height: auto;
+	min-height: 160px;
+}
+#hw_info_detail{
+	width: 100%;
+	height: 70px;
+}
+#hw_info_detail p{
+	width: 100%;
+	height: 30px;
+	line-height: 30px;
+}
+.hwifdt_left{
+	padding-left: 5%;
+	width: 55%;
+	height: 70px;
+	float: left;
+	/* background:rgb(88,134,134); */
+}
+.hwifdt_right{
+	width: 40%;
+	height: 70px;
+	float: left;
+	/* background: rgb(77,103,103); */
+}
+#edit_hwinfo{
+	text-align: right;
+	background: #ececec;
+	cursor: pointer;
+	color: blue;
+}
+#button p{
+	width:80px;
+	height: 30px;
+	float: left;
+	color: white;
+	text-align: center;
+	cursor: pointer;
+	line-height: 30px;
+	background: rgb(88,134,134);
+	border-radius: 10%; 
+}

@@ -1,0 +1,11 @@
+
+.blank_answer{
+	width:100px;
+	height: 30px;
+	line-height: 30px;
+	text-align: center;
+	background: #ececec;
+	outline: none;
+	border:0;
+	border-bottom: 2px solid gray;
+}
