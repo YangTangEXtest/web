@@ -1,0 +1,161 @@
+*{
+	margin: 0;
+	padding:0;
+}
+a{
+	text-decoration: none;
+}
+a:link{
+	color: #000;
+}
+a:visited{
+	color: #000;
+}
+a:hover{
+	color: #000;
+}
+a:active{
+	color: #000;
+}
+body{
+	background: #fff;
+}
+header{
+	width: 100%;
+	height: 50px;
+	top:0;
+	left: 0;
+	border-bottom: 1px solid #ccc;
+	position: fixed;
+	background: #ececec;
+	z-index: 99;
+}
+
+/*page info*/
+#menu{
+	width: 300px;
+	height: 50px;
+	float: left;
+	margin-left:193px;
+}
+#menu ul li{
+	width: 57px;
+	float: left;
+	text-align: center;
+	height: 50px;
+	line-height: 50px;
+	font-size: 13px;
+	list-style: none;
+	color: #555;
+}
+/*#menu ul li a:link{
+	color: #fff;
+}
+#menu ul li a:visited{
+	color: #fff;
+}
+#menu ul li a:hover{
+	color: #fff;
+}
+#menu ul li a:active{
+	color: #fff;
+}*/
+
+
+/*user info*/
+#user_info{
+	width: 186px;
+	height: 50px;
+	position: relative;
+	float: right;
+	top: 7px;
+	right:15px;
+	list-style: none;
+	color: #fff;
+	z-index: 99;
+}
+#user_logo{
+	position: absolute;
+	top: 0;
+	right: 0;
+	height: 50px;
+}
+#user_logo img{
+	display: block;
+	float:left;
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+	border: 2px solid #ffffff;
+}
+#user_name{
+	font-size: 14px;
+	font-family: "微软雅黑";
+	font-weight: 500;
+	float:left;
+	margin-left: 5px;
+	line-height: 40px;
+}
+#hover_user{
+	display: none;
+	position: absolute;
+	top: 44px;
+	right: -5px;
+	width: 200px;
+	height: 133px;
+	background: rgba(149,185,185,1);
+	clear: both;
+	border-radius: 4px;
+}
+#hover_user p{
+	width: 100%;
+	clear: both;
+}
+#hover_user #hover_name{
+	width: 100%;
+	height: 60px;
+	border-bottom: 1px solid #ccc;
+}
+#hover_user #hover_name img{
+	display: inline-block;
+	width: 34px;
+	height: 34px;
+	margin:12px;
+	border-radius: 50%;
+	border:2px solid #ffffff;
+}
+#hover_user #hover_name span{
+	position: absolute;
+	display: inline-block;
+	left: 60px;
+	top:0;
+	line-height: 60px;
+	font-size: 12px;
+}
+#hover_user p img{
+	width: 20px;
+	height: 20px;
+	display: block;
+	float: left;
+	margin-left: 15px;
+	margin-top: 10px;
+}
+#hover_user p span{
+	position: relative;
+	display: block;
+	float: left;
+	margin-left: 10px;
+	font-size: 12px;
+	margin-top: 10px;
+}
+#title{
+	
+}
+/*#hover_user p span a:link{color:#ccc;}
+#hover_user p span a:hover{color:#ccc;}
+#hover_user p span a:active{color:#ccc;}
+#hover_user p span a:visited{color:#ccc;}
+#hover_name span a:link{color:#ccc;}
+#hover_name span a:hover{color:#ccc;}
+#hover_name span a:active{color:#ccc;}
+#hover_name span a:visited{color:#ccc;}*/

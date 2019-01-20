@@ -1,0 +1,93 @@
+#main{
+	width: 1024px;
+	min-height: 100px;
+	margin: 70px auto;
+}
+.classInfo{
+
+}
+.classInfo p{
+	width: 100%;
+	height: 30px;
+	line-height: 30px;
+}
+.classInfoList{
+	/* min-height: 100px; */
+	background: #ececec;
+	margin-top:20px;
+}
+.classInfoList h3{
+	color: rgb(51,122,183);
+	font-weight:normal;
+	height: 40px;
+	cursor: pointer;
+	font-size: normal;
+	line-height: 40px;
+	background: #ffffff;
+}
+.publishhw{
+	width: 100%;
+	height: 60px;
+	text-align: right;
+}
+.btn{
+	color: #fff;
+    display: inline-block;
+    font-size: 14px;
+    cursor: pointer;
+    padding: 6px 12px;
+    vertical-align: middle;
+    background-color: rgb(51,122,183);
+    /* border-color: #122b40; */
+    border-radius: 4px;
+}
+#classhwList{
+
+}
+.hwList{
+	min-height: 200px;
+	background: #ffffff;
+}
+.hwList h4{
+	width: 100%;
+    height: 40px;
+    color: rgb(54,54,54);
+    line-height: 40px;
+    background: #ececec;
+}
+.hwlistInfo{
+	min-height: 100px;
+}
+.hwlistInfo_left{
+	padding-left: 5%;
+    width: 55%;
+    height: 100px;
+    float: left;
+}
+.hwlistInfo_right{
+	width: 40%;
+    height: 100px;
+    float: left;
+}
+.hwlistInfo p{
+	width: 100%;
+    height: 30px;
+    line-height: 30px;
+}
+.hwlistOperate{
+	width: 100%;
+	height: 40px;
+	line-height: 40px;
+	text-align: right;
+    background: #ececec;
+}
+.hwlistOperate button{
+	border:0px;
+	font-size: 16px;
+	cursor: pointer;
+	background: #ececec;
+	padding-right: 20px;
+}
+.hwlistOperate button a{
+	color: rgb(51,122,183);
+}
