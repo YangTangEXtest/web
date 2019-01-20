@@ -25,10 +25,12 @@
 
 </span>
 <br>
+<form>
 <input type="radio" name="judge" value="T" class="judge_option">
 &nbsp;T
 <br>
 <input type="radio" name="judge" value="F" class="judge_option">
 &nbsp;F
+</form>
 </body>
 </html>

@@ -20,11 +20,13 @@
     </script>
 </head>
 <body>
+<form>
 <sapn class="num num_shortAnswer">3.</sapn>
 <span class="zy_cont zy_cont_shortAnswer">你觉得村上春树的作品好在哪？请简述你的个人理解。</span>
 <br><br>
 <span>答案：</span>
 <br>
 <textarea name="short_as_answer1" class="short_as_answer"></textarea>
+</form>
 </body>
 </html>

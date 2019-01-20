@@ -42,6 +42,7 @@
 
     </span>
     <br>
+    <Form>
     <input type="radio" name="choice" value="A" class="option">
         <span class="optionA"></span>
     <br>
@@ -55,5 +56,6 @@
         <span class="optionD"></span>
     <br>
     <input type="hidden" name="radio">
+    </Form>
     </body>
 </html>
