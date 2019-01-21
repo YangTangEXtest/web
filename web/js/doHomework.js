@@ -246,18 +246,18 @@ $(document).ready(function(){
                     "type":"choice",
                     "qid":5,//题目id
                     "name":11,//题号
-                    "describe":"这是选择题题干",
-                    "choiceA":"这是选项A",
-                    "choiceB":"这是选项B",
-                    "choiceC":"这是选项C",
-                    "choiceD":"这是选项D",
+                    "describe":"这是选择题题1111",
+                    "choiceA":"这A",
+                    "choiceB":"这项B",
+                    "choiceC":"这是项C",
+                    "choiceD":"这项D",
                     "score":"3"
                 },
                 {
                     "type":"choice",
                     "qid":1,//题目id
                     "name":11,//题号
-                    "describe":"这是选择题题干",
+                    "describe":"这是选择题题干222",
                     "choiceA":"这是选项A",
                     "choiceB":"这是选项B",
                     "choiceC":"这是选项C",
@@ -268,42 +268,42 @@ $(document).ready(function(){
                     "type":"blank",
                     "qid":4,
                     "name":2,
-                    "describe":"这是填空题题干",
+                    "describe":"这是填空题题干111",
                     "score":"3"
                 },
                 {
                     "type":"blank",
                     "qid":2,
                     "name":2,
-                    "describe":"这是填空题题干",
+                    "describe":"这是填空题题干222",
                     "score":"3"
                 },
                 {
                     "type":"judge",
                     "qid":8,
                     "name":3,
-                    "describe":"这是判断题题干",
+                    "describe":"这是判断题题干1111",
                     "score":"3"
                 },
                 {
                     "type":"judge",
                     "qid":3,
                     "name":3,
-                    "describe":"这是判断题题干",
+                    "describe":"这是判断题题干222",
                     "score":"3"
                 },
                 {
                     "type":"ShortAnswer",
                     "qid":9,
                     "name":4,
-                    "describe":"这是简答题题干",
+                    "describe":"这是简答题题干111",
                     "score":"3"
                 },
                 {
                     "type":"ShortAnswer",
                     "qid":10,
                     "name":4,
-                    "describe":"这是简答题题干",
+                    "describe":"这是简答题题干222",
                     "score":"3"
                 }
             ]

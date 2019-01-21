@@ -9,20 +9,20 @@
 <html>
 <head>
     <title>Title</title>
-    <script type="text/javascript">
-        <%String name=request.getParameter("name");%>
-        var name="<%=name%>";
-        $(".num_judge").text(name+".");
+    <%--<script type="text/javascript">--%>
+        <%--<%String name=request.getParameter("name");%>--%>
+        <%--var name="<%=name%>";--%>
+        <%--$(".num_judge").text(name+".");--%>
 
-        <%String describe=request.getParameter("describe");%>
-        var describe="<%=describe%>";
-        $(".zy_cont_judge").text(describe);
-    </script>
+        <%--<%String describe=request.getParameter("describe");%>--%>
+        <%--var describe="<%=describe%>";--%>
+        <%--$(".zy_cont_judge").text(describe);--%>
+    <%--</script>--%>
 </head>
 <body>
-<span class="num num_judge"></span>
+<span class="num num_judge"><%=request.getParameter("name")%></span>
 <span class="zy_cont zy_cont_judge">
-
+    <%=request.getParameter("describe")%>
 </span>
 <br>
 <form>

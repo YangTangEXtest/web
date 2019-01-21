@@ -9,20 +9,20 @@
 <html>
 <head>
     <title>Title</title>
-    <script type="text/javascript">
-        <%String name=request.getParameter("name");%>
-        var name="<%=name%>";
-        $(".num_shortAnswer").text(name+".");
+    <%--<script type="text/javascript">--%>
+        <%--<%String name=request.getParameter("name");%>--%>
+        <%--var name="<%=name%>";--%>
+        <%--$(".num_shortAnswer").text(name+".");--%>
 
-        <%String describe=request.getParameter("describe");%>
-        var describe="<%=describe%>";
-        $(".zy_cont_shortAnswer").text(describe);
-    </script>
+        <%--<%String describe=request.getParameter("describe");%>--%>
+        <%--var describe="<%=describe%>";--%>
+        <%--$(".zy_cont_shortAnswer").text(describe);--%>
+    <%--</script>--%>
 </head>
 <body>
 <form>
-<sapn class="num num_shortAnswer">3.</sapn>
-<span class="zy_cont zy_cont_shortAnswer">你觉得村上春树的作品好在哪？请简述你的个人理解。</span>
+<sapn class="num num_shortAnswer"><%=request.getParameter("name")%></sapn>
+<span class="zy_cont zy_cont_shortAnswer"><%=request.getParameter("describe")%></span>
 <br><br>
 <span>答案：</span>
 <br>

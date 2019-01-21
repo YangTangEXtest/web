@@ -9,19 +9,19 @@
 <html>
 <head>
     <title>Title</title>
-    <script type="text/javascript">
-        <%String name=request.getParameter("name");%>
-        var name="<%=name%>";
-        $(".num_blank").text(name+".");
+    <%--<script type="text/javascript">--%>
+        <%--<%String name=request.getParameter("name");%>--%>
+        <%--var name="<%=name%>";--%>
+        <%--$(".num_blank").text(name+".");--%>
 
-        <%String describe=request.getParameter("describe");%>
-        var describe="<%=describe%>";
-        $(".zy_cont_blank").text(describe);
-    </script>
+        <%--<%String describe=request.getParameter("describe");%>--%>
+        <%--var describe="<%=describe%>";--%>
+        <%--$(".zy_cont_blank").text(describe);--%>
+    <%--</script>--%>
 </head>
 <body>
-<sapn class="num num_blank"></sapn>
-<span class="zy_cont zy_cont_blank"></span>
+<sapn class="num num_blank"><%=request.getParameter("name")%></sapn>
+<span class="zy_cont zy_cont_blank"><%=request.getParameter("describe")%></span>
 <br><br>
 <form>
 <span>答案：</span><input type="text" name="blank" class="blank_answer"/>
