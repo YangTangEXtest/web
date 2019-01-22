@@ -139,10 +139,14 @@ function emptyEmptyEditWindow() {
 }//end of emptyEmptyEditWindow()
 
 //关闭题目编辑框
-
 function click_close(){
-  emptyEmptyEditWindow();
-  $("#modal-container-edit-question").fadeOut();
+    emptyEmptyEditWindow();
+    /*if($("#chooseQuestion").css("display") != "none"){*/
+        $("#chooseQuestion").fadeOut();
+    /*}else if ($("#modal-container-edit-question").css("display") != "none"){*/
+        $("#modal-container-edit-question").fadeOut();
+   /* }*/
+
 }
 //显示不同类型作业的题目输入界面
 function changeHWType(HWtype) {
@@ -254,7 +258,7 @@ function change_data(i) {
   }
   console.log("questions["+i+"]的值为"+questions[i].type);
 
-  questions[i].name = $("#hw-title").val();
+  /*questions[i].name = $("#hw-title").val();*/
   questions[i].describe = $("#hw-content").val();
   questions[i].score = $("#hw-score").val();
 
@@ -291,7 +295,8 @@ function show_questions(){
   $("#div_questions").empty();
   var total_score = 0;
   for (var i = 0; i < questions.length; i++){
-    addQuestion(questions[i]);
+      var j=parseInt(i+1);
+    addQuestion(questions[i],j);
     total_score += parseInt(questions[i].score);
   }
   homework.score_face = total_score;
@@ -299,7 +304,7 @@ function show_questions(){
 }// end of showquestion()
 
 //显示题目内容
-function addQuestion(q) {
+function addQuestion(q,i) {
 
   console.log("执行了函数：addQuestion(),参数为:"+q);
   var html;
@@ -338,11 +343,11 @@ function addQuestion(q) {
   html = '        <div class="question_list">';
   html += '          <div class="question_list_header">';
   html += '            <h3 class="question_list_title">';
-  html += '              <strong>'+qType+'</strong>'+q.name+'（'+q.score+'分）';
+  html += '              <strong>'+qType+'</strong>（'+q.score+'分）';
   html += '            </h3>';
   html += '          </div>';
   html += '          <div class="question_list_body">';
-  html += '            <p class="question_list_text-info">'+s+'</p>';
+  html += '            <p class="question_list_text-info">'+i+'. '+s+'</p>';
   if (q.type == "0") {
     html += '            <p>A. '+q.choiceA+'</p>';
     html += '            <p>B. '+q.choiceB+'</p>';
@@ -401,15 +406,16 @@ function submit_problem(){
   changeType();
   if (type == "edit") {
     homework.hid = hid;
-    postJSON("getRefreshQuestion.java",$.toJSON(homework),function showResponse(response){
+    postJSON("getRefreshQuestion",$.toJSON(homework),function showResponse(response){
       alert("成功修改");
       //self.location='www.baidu.com';
     });
   } else {
     homework.clid = clid;
     /*console.log($.toJSON(homework));*/
-    postJSON("getQuestion.java",$.toJSON(homework),function showResponse(){
+    postJSON("test",$.toJSON(homework),function showResponse(){
       alert("成功发布！");
+      self.location="MonogoDBconn";
      // self.location="www.baidu.com";
     });
   }
@@ -480,6 +486,131 @@ function delete_question_btn() {
   delete_question(cur);
 
 }//end of delete_question_btn()
+
+//点击“题库选题”按钮
+function choose_question() {
+    $("#chooseQuestion").fadeIn();
+}
+
+//选题弹出框中显示从题库中取出的题
+function showTikuQuestion(tikuList){
+    tikuHomeworkList = tikuList;
+    var HWList = tikuList.HWList;
+    var html = '';
+    for (var i = 0;i < HWList.length; i++){
+        html += '<lable><input type="checkbox" name="choose" value = "'+HWList[i].qid+'">'+HWList[i].describe+'</lable><br />'
+    }
+    $("#chooseContainerBody").append(html);
+    $("#chooseContainerBody").fadeIn();
+    $("#chooseHomework").fadeIn();
+}
+
+//从题库中选题弹出框中点击“选题”按钮
+function getHomework() {
+    var type = $("#chooseType").val();
+    var tikuHomework = {
+        "class":"数据结构",
+        "type":type
+    }
+
+    postJSON("getRefreshQuestion.java",$.toJSON(tikuHomework),function showResponse(response){
+        response = {
+            "type":"choice",
+            "HWList":[
+                {
+                    "type":"choice",
+                    "qid":5,//题目id
+                    "describe":"这是选择题题干",
+                    "choiceA":"这是选项A",
+                    "choiceB":"这是选项B",
+                    "choiceC":"这是选项C",
+                    "choiceD":"这是选项D",
+                    "score":"3",
+                    "answer":"A"
+                },
+                {
+                    "type":"choice",
+                    "qid":6,//题目id
+                    "describe":"这是选择题题干",
+                    "choiceA":"这是选项A",
+                    "choiceB":"这是选项B",
+                    "choiceC":"这是选项C",
+                    "choiceD":"这是选项D",
+                    "score":"3",
+                    "answer":"A"
+                },
+                {
+                    "type":"choice",
+                    "qid":7,//题目id
+                    "describe":"这是选择题题干",
+                    "choiceA":"这是选项A",
+                    "choiceB":"这是选项B",
+                    "choiceC":"这是选项C",
+                    "choiceD":"这是选项D",
+                    "score":"3",
+                    "answer":"A"
+                },
+                {
+                    "type":"choice",
+                    "qid":8,//题目id
+                    "describe":"这是选择题题干",
+                    "choiceA":"这是选项A",
+                    "choiceB":"这是选项B",
+                    "choiceC":"这是选项C",
+                    "choiceD":"这是选项D",
+                    "score":"3",
+                    "answer":"A"
+                }
+            ]
+        };
+        showTikuQuestion(response);
+    });
+}
+
+//选择好题库中的题后push到homework中
+function pushTikuToHomework(){
+    var type = tikuHomeworkList.type;
+    switch (type) {
+        case 'choice':case 0:
+        type = "0";
+        break;
+        case 'judge':case 1:
+        type = "1";
+        break;
+        case 'blank':case 2:
+        type = "2";
+        break;
+        case 'shortAnswer':case 3:
+        type = "3";
+        break;
+        case 'offline':case 4:
+        type = "4";
+        break;
+    }
+
+    var HWList = tikuHomeworkList.HWList;
+    $("#chooseContainerBody input[name='choose']:checked").each(function(){
+        var qid = $(this).val();
+        for(var i = 0;i < HWList.length; i++){
+            if (HWList[i].qid == qid) {
+                questions.push({
+                    "qid":qid,
+                    "type":type,
+                    "describe":HWList[i].describe,
+                    "score":HWList[i].score,
+                    "choiceA":HWList[i].choiceA,
+                    "choiceB":HWList[i].choiceB,
+                    "choiceC":HWList[i].choiceC,
+                    "choiceD":HWList[i].choiceD,
+                    "answer":HWList[i].answer
+                });
+            }
+        }//end of for
+    });// end of each
+    click_close();
+    show_questions();
+
+}
 
 //页面加载执行，获取班级ID，类型，作业类型
 $(document).ready(function(){

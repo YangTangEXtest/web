@@ -11,14 +11,11 @@ function postJSON(url, jsonStr, successFunction, async=true) {
           success : function(response, status, xhr) {
             if (status != "success")
               alert("未知错误");
-            else if (response['code'] != 0)
-              alert("错误"+response['code']+"："+response['msg']);
             else successFunction(response);
           },
           error : function(xhr, error, exception) {
               // handle the error.
               successFunction();
-              alert("postJSON error");
               alert(exception.toString());
           }
         });

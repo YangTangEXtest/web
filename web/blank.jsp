@@ -20,11 +20,13 @@
     <%--</script>--%>
 </head>
 <body>
+<div id="mubanBlank">
 <sapn class="num num_blank"><%=request.getParameter("name")%></sapn>
 <span class="zy_cont zy_cont_blank"><%=request.getParameter("describe")%></span>
 <br><br>
 <form>
 <span>答案：</span><input type="text" name="blank" class="blank_answer"/>
 </form>
+</div>
 </body>
 </html>

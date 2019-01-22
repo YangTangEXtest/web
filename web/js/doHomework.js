@@ -20,7 +20,7 @@ function showHomeworkInfo() {
         "name":response.name,
         "class":response.class
     }
-    $("#zyInfo").load("homeworkInfo.jsp",mubandata,function(){
+    $("#zyInfo").load("homeworkInfo.jsp #mubanHomeworkInfo",mubandata,function(){
         console.log("loaded zyInfo successed!");
     })
 }
@@ -41,7 +41,7 @@ function showChoice(i) {
         "choiceD": HWList[i].choiceD,
         "score": HWList[i].score
     };
-    $('#qid' + HWList[i].qid).load("choice.jsp", mubandata, function () {
+    $('#qid' + HWList[i].qid).load("choice.jsp #mubanChoice", mubandata, function () {
         console.log("导入选择题" + HWList[i].qid + "成功！");
     });
 }
@@ -58,7 +58,7 @@ function showBlank(i) {
         "describe": HWList[i].describe,
         "score": HWList[i].score
     };
-    $('#qid' + HWList[i].qid).load("blank.jsp", mubandata, function () {
+    $('#qid' + HWList[i].qid).load("blank.jsp #mubanBlank", mubandata, function () {
         console.log("导入填空题" + HWList[i].qid + "成功！");
     });
 }
@@ -75,7 +75,7 @@ function showJudge(i) {
         "describe": HWList[i].describe,
         "score": HWList[i].score
     };
-    $('#qid' + HWList[i].qid).load("judge.jsp", mubandata, function () {
+    $('#qid' + HWList[i].qid).load("judge.jsp #mubanJudge", mubandata, function () {
         console.log("导入判断题" + HWList[i].qid + "成功！");
     });
 }
@@ -92,7 +92,7 @@ function showShortAnswer(i) {
         "describe": HWList[i].describe,
         "score": HWList[i].score
     };
-    $('#qid' + HWList[i].qid).load("shortAnswer.jsp", mubandata, function () {
+    $('#qid' + HWList[i].qid).load("shortAnswer.jsp #mubanShortanswer", mubandata, function () {
         console.log("导入简答题" + HWList[i].qid + "成功！");
     });
 }
@@ -200,7 +200,7 @@ function submit(){
   //提交答案
   var jsonStr = $.toJSON(answerJson);
   if(ch == "true"){//提交作业答案
-       postJSON("GetAnswer.java",jsonStr,function showResponse(response){
+       postJSON("GetAnswer",jsonStr,function showResponse(response){
            if(response.status == "200"){
                console.log("提交作业成功");
            }else{
@@ -224,7 +224,7 @@ $(document).ready(function(){
     };
     //responseHoemwork = {};
     var jsonStr = $.toJSON(request);
-    postJSON("GetHomework.java",jsonStr,function showResponse(response1){
+    postJSON("GetHomework",jsonStr,function showResponse(response1){
         //测试数据
         response = {
             "status":200, //状态代码，随后端定

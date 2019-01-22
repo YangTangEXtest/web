@@ -38,6 +38,7 @@
     <%--</script>--%>
 </head>
 <body>
+    <div id="mubanChoice">
     <span class="num num_choice" id="name"><%=request.getParameter("name") %></span>
     <span class="zy_cont zy_cont_choice" id="describe">
         <%=request.getParameter("describe")%>
@@ -58,5 +59,6 @@
     <br>
     <input type="hidden" name="radio">
     </Form>
+    </div>
     </body>
 </html>

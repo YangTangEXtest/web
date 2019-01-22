@@ -20,6 +20,7 @@
     <%--</script>--%>
 </head>
 <body>
+<div id="mubanJudge">
 <span class="num num_judge"><%=request.getParameter("name")%></span>
 <span class="zy_cont zy_cont_judge">
     <%=request.getParameter("describe")%>
@@ -32,5 +33,6 @@
 <input type="radio" name="judge" value="F" class="judge_option">
 &nbsp;F
 </form>
+</div>
 </body>
 </html>

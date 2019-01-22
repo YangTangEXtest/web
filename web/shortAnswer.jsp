@@ -20,6 +20,7 @@
     <%--</script>--%>
 </head>
 <body>
+<div id="mubanShortanswer">
 <form>
 <sapn class="num num_shortAnswer"><%=request.getParameter("name")%></sapn>
 <span class="zy_cont zy_cont_shortAnswer"><%=request.getParameter("describe")%></span>
@@ -28,5 +29,6 @@
 <br>
 <textarea name="short_as_answer1" class="short_as_answer"></textarea>
 </form>
+</div>
 </body>
 </html>
