@@ -495,10 +495,10 @@ function choose_question() {
 //选题弹出框中显示从题库中取出的题
 function showTikuQuestion(tikuList){
     tikuHomeworkList = tikuList;
-    var HWList = tikuList.HWList;
+    var HWList = tikuList.homework;
     var html = '';
     for (var i = 0;i < HWList.length; i++){
-        html += '<lable><input type="checkbox" name="choose" value = "'+HWList[i].qid+'">'+HWList[i].describe+'</lable><br />'
+        html += '<lable><input type="checkbox" name="choose" autocomplete="off" value = "'+HWList[i].qid+'">'+HWList[i].describe+'</lable><br />'
     }
     $("#chooseContainerBody").append(html);
     $("#chooseContainerBody").fadeIn();
@@ -513,10 +513,10 @@ function getHomework() {
         "type":type
     }
 
-    postJSON("getRefreshQuestion.java",$.toJSON(tikuHomework),function showResponse(response){
+    postJSON("FrontControl",$.toJSON(tikuHomework),function showResponse(response){
         response = {
             "type":"choice",
-            "HWList":[
+            "homework":[
                 {
                     "type":"choice",
                     "qid":5,//题目id
@@ -571,19 +571,19 @@ function getHomework() {
 function pushTikuToHomework(){
     var type = tikuHomeworkList.type;
     switch (type) {
-        case 'choice':case 0:
+        case 'choice':
         type = "0";
         break;
-        case 'judge':case 1:
+        case 'judge':
         type = "1";
         break;
-        case 'blank':case 2:
+        case 'blank':
         type = "2";
         break;
-        case 'shortAnswer':case 3:
+        case 'shortAnswer':
         type = "3";
         break;
-        case 'offline':case 4:
+        case 'offline':
         type = "4";
         break;
     }
@@ -593,17 +593,27 @@ function pushTikuToHomework(){
         var qid = $(this).val();
         for(var i = 0;i < HWList.length; i++){
             if (HWList[i].qid == qid) {
-                questions.push({
-                    "qid":qid,
-                    "type":type,
-                    "describe":HWList[i].describe,
-                    "score":HWList[i].score,
-                    "choiceA":HWList[i].choiceA,
-                    "choiceB":HWList[i].choiceB,
-                    "choiceC":HWList[i].choiceC,
-                    "choiceD":HWList[i].choiceD,
-                    "answer":HWList[i].answer
-                });
+                if(type == "0") {
+                    questions.push({
+                        "qid": qid,
+                        "type": type,
+                        "describe": HWList[i].describe,
+                        "score": HWList[i].score,
+                        "choiceA": HWList[i].choiceA,
+                        "choiceB": HWList[i].choiceB,
+                        "choiceC": HWList[i].choiceC,
+                        "choiceD": HWList[i].choiceD
+                        // "answer": HWList[i].answer
+                    });
+                } else{
+                    questions.push({
+                        "qid": qid,
+                        "type": type,
+                        "describe": HWList[i].describe,
+                        "score": HWList[i].score
+                        // "answer": HWList[i].answer
+                    });
+                }
             }
         }//end of for
     });// end of each
