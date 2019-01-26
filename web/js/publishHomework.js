@@ -49,6 +49,9 @@ function get_class_info(){
         score_weight: 0,
         finish_number: 0
       };
+      homework.people = new Array();
+      homework.people = classPeople.classmate
+
       homework.homework = new Array();
       questions = homework.homework;
       showDescription(homework);
@@ -89,13 +92,13 @@ function showDescription(hw){
   html += '       <div id="hw_info_detail">';
   html += '         <div class="hwifdt_left">';
   html += '           <p>起始时间：'+hw.begin_t+'</p>';
-  html += '           <p>截止时间：'+hw.end_t+'</p>';
-  html += '           <p>终止时间：'+hw.hard_ddl+'</p>';
+  html += '           <p>结束时间：'+hw.end_t+'</p>';
+  //html += '           <p>终止时间：'+hw.hard_ddl+'</p>';
   html += '         </div>';
   html += '         <div class="hwifdt_right">';
-  html += '           <p>作业类型：'+typestr+'</p>';
-  html += '           <p>作业比重：'+hw.score_face+'</p>';
-  html += '           <p>完成人数：'+hw.finish_number+'</b>/'+'班级人数（class_info.student_num）'+'</p>';
+  html += '           <p>作业类型： <select name="chooseType" id="chooseType"> <option value="online">个人在线作业</option> <option value="offline">个人离线作业</option> <option value="group">小组作业</option> </select> </p>';
+  html += '           <p>作业对象： <input type="text" value="全体成员" id="hwpeople" onmouseover="showPeople($(this))"> <input type="button" value="选择" id="People" onclick="choosePeople()"> </p>';
+  //html += '           <p>完成人数：'+hw.finish_number+'</b>/'+'班级人数（class_info.student_num）'+'</p>';
   html += '         </div>';
   html += '       </div>';
   html += '       <p id="edit_hwinfo" class="hw_title">编辑&nbsp;&nbsp;</p>';
@@ -103,6 +106,60 @@ function showDescription(hw){
   /*console.log("生成的html:"+html);*/
   $("#div_descripthon").append(html);
 }//end of showDescription
+
+//选择作业对象
+function choosePeople() {
+    $("#choosePeople").fadeIn();
+    var classmate = classPeople.classmate;
+    $("#choosePeopleContainerBody").empty();
+    var html = '';
+    html += '<lable><input type="checkbox" name="choosePeople" autocomplete="off" value = "allclass">全体成员</lable><br />'
+    for (var i = 0;i < classmate.length; i++){
+        html += '<lable><input type="checkbox" name="choosePeople" autocomplete="off" value = "'+classmate[i].usernum+'">'+classmate[i].username+'（'+classmate[i].usernum+'）</lable><br />'
+    }
+    $("#choosePeopleContainerBody").append(html);
+
+}
+
+//获取作业对象
+function getPeople() {
+    //获取数据，添加到要提交的json数据中
+    var classmate = classPeople.classmate;
+    var hwpeople = new Array();
+    $("#choosePeopleContainerBody input[name = 'choosePeople']:checked").each(function(){
+       var usernum = $(this).val();
+       //alert(usernum);
+        for (var i = 0;i < classmate.length;i++){
+           if (usernum == classmate[i].usernum){
+               hwpeople.push({
+                   "username":classmate[i].username,
+                   "usernum":classmate[i].usernum
+               });
+           }else if(usernum == "allclass"){
+               //hwpeople = new Array();
+               hwpeople = classmate;
+               break;
+           }
+       }
+       homework.people = hwpeople;
+    });
+    //更改作业基本信息
+    var people = "";
+    for (var i =0;i<homework.people.length;i++){
+        people += homework.people[i].username+"、";
+    }
+    $("#hwpeople").val(people);
+    $("#choosePeople").fadeOut();
+    $("#choosePeopleContainerBody").empty();
+}
+
+//鼠标在作业对象上时，显示作业对象的所有内容
+function  showPeople(a) {
+    // var val = $("#hwpeople").val();
+    // $("#hwpeople").attr("title",val);
+    var val = a.val();
+    a.attr("title",val);
+}
 
 //添加题目
 function add_question() {
@@ -146,6 +203,7 @@ function click_close(){
     /*}else if ($("#modal-container-edit-question").css("display") != "none"){*/
         $("#modal-container-edit-question").fadeOut();
    /* }*/
+    $("#choosePeople").fadeOut();
 
 }
 //显示不同类型作业的题目输入界面
@@ -496,9 +554,11 @@ function choose_question() {
 function showTikuQuestion(tikuList){
     tikuHomeworkList = tikuList;
     var HWList = tikuList.homework;
+    $("#chooseContainerBody").empty();
     var html = '';
+    //html += '<lable><input type="checkbox" name="choose" value = "'+HWList[i].qid+'">'+HWList[i].describe+'</lable><br />'
     for (var i = 0;i < HWList.length; i++){
-        html += '<lable><input type="checkbox" name="choose" autocomplete="off" value = "'+HWList[i].qid+'">'+HWList[i].describe+'</lable><br />'
+        html += '<lable><input type="checkbox" name="choose" value = "'+HWList[i].qid+'">'+HWList[i].describe+'</lable><br />'
     }
     $("#chooseContainerBody").append(html);
     $("#chooseContainerBody").fadeIn();
@@ -588,9 +648,10 @@ function pushTikuToHomework(){
         break;
     }
 
-    var HWList = tikuHomeworkList.HWList;
+    var HWList = tikuHomeworkList.homework;
     $("#chooseContainerBody input[name='choose']:checked").each(function(){
         var qid = $(this).val();
+        //console.log(HWList);
         for(var i = 0;i < HWList.length; i++){
             if (HWList[i].qid == qid) {
                 if(type == "0") {
@@ -618,6 +679,7 @@ function pushTikuToHomework(){
         }//end of for
     });// end of each
     click_close();
+    $("#chooseContainerBody").empty();
     show_questions();
 
 }
@@ -635,6 +697,30 @@ $(document).ready(function(){
   clid = 1;
   type = "publish";
   hid = 2;
+
+    classPeople = {
+        "class":"数据结构",
+        "username":"Yang",
+        "type":"publish",
+        "classmate":[
+        {
+            "username":"张三",
+            "usernum":"2018120265"
+        },
+        {
+            "username":"李四",
+            "usernum":"2018120264"
+        },
+        {
+            "username":"王五",
+            "usernum":"2018120263"
+        },
+        {
+            "username":"张大麻子",
+            "usernum":"2018120262"
+        }
+    ]
+    }
   /*测试数据end*/
 
   if (clid == undefined || type == undefined){

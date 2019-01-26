@@ -49,17 +49,27 @@ body{
 }
 #hw_info_detail{
 	width: 100%;
-	height: 100px;
+	height: 70px;
 }
 #hw_info_detail p{
 	width: 100%;
 	height: 30px;
 	line-height: 30px;
 }
+#choosePeople{
+	width:300px;
+	display: none;
+}
+#hwpeople{
+	display:inline-block;
+	white-space:nowrap;
+	overflow:hidden;
+	text-overflow:ellipsis;
+}
 .hwifdt_left{
 	padding-left: 5%;
 	width: 55%;
-	height: 100px;
+	height: 70px;
 	float: left;
 	/* background:rgb(88,134,134); */
 }
@@ -283,4 +293,9 @@ body{
 }
 #chooseHomework{
 	display: none;
+}
+#choosePeopleContainerBody{
+	width:250px;
+	height: 400px;
+	overflow: scroll;
 }

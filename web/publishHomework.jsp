@@ -23,6 +23,18 @@
 
 <div class="container">
     <div class="row clearfix" id="div_descripthon"></div>
+    <div class="question_cont_container" id="choosePeople">
+        <div class="edit_container_header">
+            <button type="button" class="close" onclick="click_close()">×</button>
+            <h4 class="edit_title">选择作业对象</h4>
+        </div>
+        <div class="edit_container_body" id="choosePeopleContainerBody">
+
+        </div>
+        <div class="edit_container_footer" id="choosePeopleFooter">
+            <button type="button" class="btn"  onclick="getPeople()">确定</button>
+        </div>
+    </div>
 </div>
 
 <div class="container">
